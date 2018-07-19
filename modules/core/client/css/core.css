@@ -41,3 +41,184 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
   display: inline;
 }
+
+.list-group {
+  overflow-y: auto;
+  height: 500px;
+}
+
+.alerta {
+  background-color: #ff3300;
+  color: #fff;
+}
+
+.total {
+  background-color: #ffff00;
+}
+
+.sucesso {
+  background-color: #33ff00;
+}
+
+.resumo {
+  display: flex;
+}
+
+.resumo > div {
+  border: 1px solid #999;
+}
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+#innerModal {
+  /*width: 600px;*/
+  margin: 0 auto;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+/* The Close Button */
+.close {
+    position: relative;
+    /*top: 15px;*/
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.table-danger {
+  background-color: #f5c6cb;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+.dropdown button:hover  {
+  background-color: #ccc;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.dropdown-item:hover {
+  background-color: #eee;
+  text-decoration: none;
+}
+
+.green {
+  color: #1abb9c;
+}
+
+.red {
+  color: #e74c3c;
+}
+
+.count_top {
+  font-size: 13px;
+}
+
+.tile_stats_count::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 65px;
+  border-left: 2px solid #ADB2B5;
+  margin-top: 10px;
+}
+
+.tile_count {
+  color: #73879c;
+  position: relative;
+  margin-top: 15px;
+}
+
+.count {
+  font-size: 40px;
+  font-weight: bold;
+}

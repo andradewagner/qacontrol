@@ -1,0 +1,160 @@
+<section>
+
+  <div class="row page-header">
+    <div class="col-sm-2 col-xs-7">
+      <div class="form-group">
+        <div class="input-group date">
+          <input type="text" id="calendario" placeholder="Escolha uma data" class="form-control" style="z-index:0"/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2 col-xs-5" ng-show="vm.filtro">
+      <button type="button" class="btn btn-primary" ng-click="vm.limparFiltro()">Limpar Filtro</button>
+    </div>
+    <div class="col-sm-4 col-xs-12">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{vm.filtroAnalytics === null ? 'Filtre por aplicativo/área' : vm.filtroAnalytics}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#" ng-click="vm.filtrarApp('App Minha Oi')">Minha OI App</a>
+          <a class="dropdown-item" href="#" ng-click="vm.filtrarApp('Minha Oi WEB')">Minha OI WEB</a>
+          <a class="dropdown-item" href="#" ng-click="vm.filtrarApp('Oi Mod')">OI Mod</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-header" ng-show="vm.testes">
+    <h1>Resumo</h1>
+  </div>
+  <div class="row text-center" ng-show="vm.testes">
+    <div class="col-md-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Total de testes por Área</div>
+        <div class="panel-body">
+          <h3>{{ vm.testes.length }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">Total de sucesso por Área</div>
+        <div class="panel-body">
+          <h3>{{ ( vm.testes | filter: { statusGeral: true } ).length }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-danger">
+        <div class="panel-heading">Total de erros por Área</div>
+        <div class="panel-body">
+          <h3>{{ ( vm.testes | filter: { statusGeral: false } ).length }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--div class="page-header">
+    <h1>Testes</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2 col-xs-7">
+      <div class="form-group">
+        <div class="input-group date">
+          <input type="text" id="calendario" placeholder="Filtre por data" class="form-control"/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2 col-xs-5" ng-show="vm.filtro">
+      <button type="button" class="btn btn-primary" ng-click="vm.limparFiltro()">Exibir todos</button>
+    </div>
+    <div class="col-sm-4 col-xs-12">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{vm.filtroApp === null ? 'Filtre por aplicativo/área' : vm.filtroApp}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#" ng-click="vm.filtrarApp(null)">Todos</a>
+          <a class="dropdown-item" href="#" ng-click="vm.filtrarApp('Pré-pago - App Minha Oi')">Minha OI App - PRÉ-PAGO</a>
+          <a class="dropdown-item" href="#" ng-click="vm.filtrarApp('Acesso Rápido - App Minha Oi')">Minha OI App - Acesso Rápido</a>
+          <a class="dropdown-item" href="#" ng-click="vm.filtrarApp('OI Mod')">OI Mod</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-group">
+    <a ng-repeat="teste in vm.testes" ui-sref="testes.view({ testeId: teste._id })" class="list-group-item">
+      <img ng-src="{{teste.statusGeral == true ? '../../../modules/core/client/img/brand/passed.png' : '../../../modules/core/client/img/brand/fail.png'}}"/>
+      <span class="list-group-item-heading" ng-bind="teste.aplicacao"></span>
+      <small class="list-group-item-text">
+        Executado em
+        <span>{{teste.horaExecucao | date:'dd MMM yyyy hh:mm:ss a'}}</span>
+      </small>
+    </a>
+  </div-->
+
+  <!--div class="row">
+    <div ng-class="{'col-sm-8': $first || $index == '3', 'col-sm-6': vm.testes.length == '2' || vm.testes.length == '4', 'col-sm-2': vm.testes.length == '6' && !$first && $index != '3'}" ng-repeat="teste in vm.testes">
+      <table class="table table-striped">
+        <tbody>
+          <tr ng-repeat="cenario in teste.cenarios">
+            <td ng-if="$parent.$first || ($parent.$index == '3' && vm.testes.length == '6') || (vm.testes.length == '4' && $parent.$index == '2') || (vm.testes.length == '2' && $parent.$index == '1')">{{cenario.cenario}}</td>
+            <td>
+              <img id="{{$index}}" class="pointer" height="30" ng-src="{{cenario.status == true ? '../../../modules/core/client/img/brand/passed.png' : '../../../modules/core/client/img/brand/fail.png'}}" ng-click="vm.abrirModal($index, teste._id)"/>
+              {{cenario.duracao / 1000 | number : 0}} seg
+            </td>
+          </tr>
+        </tbody>
+        <thead>
+          <tr>
+            <th ng-if="$first || ($index == '3' && vm.testes.length == '6') || (vm.testes.length == '4' && $index == '2') || (vm.testes.length == '2' && $index == '1')">Área {{teste.recurso}} - Executado em {{teste.horaExecucao | date:'dd MMM yyyy'}}</th>
+            <th>{{teste.horaExecucao | date:'hh:mm:ss a'}}</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div-->
+
+  <div class="row" ng-repeat="testes in vm.separados">
+    <div class="col-sm-12" style="margin-top:30px;">
+      <table class="table-striped" ng-repeat="teste in testes" ng-class="{'col-sm-8': $first, 'col-sm-2': !$first}" style="float:left;">
+        <tbody>
+          <tr ng-repeat="cenario in teste.cenarios">
+            <td ng-if="$parent.$first">{{cenario.cenario}}</td>
+            <td>
+              <img id="{{$index}}" class="pointer" height="30" ng-src="{{cenario.status == true ? '../../../modules/core/client/img/brand/passed.png' : '../../../modules/core/client/img/brand/fail.png'}}" ng-click="vm.abrirModal($index, teste._id)"/>
+              {{cenario.duracao / 1000 | number : 0}} seg
+            </td>
+          </tr>
+        </tbody>
+        <thead>
+          <tr>
+            <th ng-if="$first">Área {{teste.recurso}} - Executado em {{teste.horaExecucao | date:'dd MMM yyyy'}}</th>
+            <th>{{teste.horaExecucao | date:'hh:mm:ss a'}}</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <div id="innerModal" class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
+      <div class="row">
+        <span class="close">&times;</span>
+      </div>
+      <img class="modal-content" id="img01"/>
+    </div>
+    <div id="caption"></div>
+  </div>
+
+</section>
