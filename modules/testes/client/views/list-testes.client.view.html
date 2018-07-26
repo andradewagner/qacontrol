@@ -30,18 +30,23 @@
   </div>
 
   <div class="page-header" ng-show="vm.testes">
-    <h1>Resumo</h1>
+    <h3>Resumo</h3>
   </div>
   <div class="row text-center" ng-show="vm.testes">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="panel panel-primary">
-        <div class="panel-heading">Total de testes por Área</div>
+        <div class="panel-heading">Total de testes</div>
         <div class="panel-body">
           <h3>{{ vm.testes.length }}</h3>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+
+    <div class="col-sm-3 col-xs-12">
+      <canvas id="myChartTotais"></canvas>
+    </div>
+
+    <!--div class="col-md-3">
       <div class="panel panel-success">
         <div class="panel-heading">Total de sucesso por Área</div>
         <div class="panel-body">
@@ -49,14 +54,14 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="panel panel-danger">
         <div class="panel-heading">Total de erros por Área</div>
         <div class="panel-body">
           <h3>{{ ( vm.testes | filter: { statusGeral: false } ).length }}</h3>
         </div>
       </div>
-    </div>
+    </div-->
   </div>
 
   <!--div class="page-header">
@@ -124,15 +129,18 @@
       </table>
     </div>
   </div-->
+  <div class="page-header" ng-show="vm.testes">
+    <h3>Execução</h3>
+  </div>
 
   <div class="row" ng-repeat="testes in vm.separados">
-    <div class="col-sm-12" style="margin-top:30px;">
-      <table class="table-striped" ng-repeat="teste in testes" ng-class="{'col-sm-8': $first, 'col-sm-2': !$first}" style="float:left;">
+    <div class="col-sm-9 col-xs-12" style="margin-top:30px;">
+      <table class="table-striped" ng-repeat="teste in testes" ng-class="{'col-sm-4 col-xs-12': $first, 'col-sm-1 col-xs-12': !$first}">
         <tbody>
           <tr ng-repeat="cenario in teste.cenarios">
             <td ng-if="$parent.$first">{{cenario.cenario}}</td>
             <td>
-              <img id="{{$index}}" class="pointer" height="30" ng-src="{{cenario.status == true ? '../../../modules/core/client/img/brand/passed.png' : '../../../modules/core/client/img/brand/fail.png'}}" ng-click="vm.abrirModal($index, teste._id)"/>
+              <img id="{{$index}}" class="pointer" height="20" ng-src="{{cenario.status == true ? '../../../modules/core/client/img/brand/passed.png' : '../../../modules/core/client/img/brand/fail.png'}}" ng-click="vm.abrirModal($index, teste._id)"/>
               {{cenario.duracao / 1000 | number : 0}} seg
             </td>
           </tr>
@@ -144,6 +152,32 @@
           </tr>
         </thead>
       </table>
+    </div>
+  </div>
+
+  <div class="page-header" ng-show="vm.testes">
+    <h3>Indicadores</h3>
+  </div>
+
+  <div class="row" ng-show="vm.testes">
+    <div class="col-sm-6 col-xs-12">
+      <canvas id="graph1" height="72"></canvas>
+    </div>
+
+    <div class="col-sm-6 col-xs-12">
+      <canvas id="graph2" height="72"></canvas>
+    </div>
+
+    <div class="col-sm-6 col-xs-12">
+      <canvas id="graph3" height="72"></canvas>
+    </div>
+
+    <div class="col-sm-6 col-xs-12">
+      <canvas id="graph4" height="72"></canvas>
+    </div>
+
+    <div class="col-sm-6 col-xs-12">
+      <canvas id="graph5" height="72"></canvas>
     </div>
   </div>
 

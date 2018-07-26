@@ -28,6 +28,7 @@ module.exports = {
         'public/lib/jquery/dist/jquery.min.js',
         'public/lib/jquery-ui/jquery-ui.min.js',
         'public/lib/bootstrap/js/dropdown.js',
+        'public/lib/chart.js/dist/Chart.bundle.js',
         //'public/lib/jquery-ui/ui/widget.js',
         //'public/lib/jquery-ui/ui/widgets/datepicker.js',
         // endbower

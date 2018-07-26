@@ -45,10 +45,6 @@
       }
     }
 
-    function filtrarPorData() {
-      console.log('filtro por data');
-    }
-
     function handleError(error) {
       // Log error
       $log.error(error);
