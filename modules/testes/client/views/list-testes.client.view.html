@@ -140,7 +140,8 @@
           <tr ng-repeat="cenario in teste.cenarios">
             <td ng-if="$parent.$first">{{cenario.cenario}}</td>
             <td>
-              <img id="{{$index}}" class="pointer" height="20" ng-src="{{cenario.status == true ? '../../../modules/core/client/img/brand/passed.png' : '../../../modules/core/client/img/brand/fail.png'}}" ng-click="vm.abrirModal($index, teste._id)"/>
+              <img height="20" ng-show="cenario.status == true" ng-src="../../../modules/core/client/img/brand/passed.png" />
+              <img id="{{$index}}" class="pointer" ng-show="cenario.status == false" height="20" ng-src="../../../modules/core/client/img/brand/fail.png" ng-click="vm.abrirModal($index, teste._id)"/>
               {{cenario.duracao / 1000 | number : 0}} seg
             </td>
           </tr>
@@ -178,6 +179,22 @@
 
     <div class="col-sm-6 col-xs-12">
       <canvas id="graph5" height="72"></canvas>
+    </div>
+
+    <div class="col-sm-6 col-xs-12">
+      <canvas id="graph6" height="72"></canvas>
+    </div>
+
+    <div class="col-sm-6 col-xs-12">
+      <canvas id="graph7" height="72"></canvas>
+    </div>
+
+    <div class="col-sm-6 col-xs-12">
+      <canvas id="graph8" height="72"></canvas>
+    </div>
+
+    <div class="col-sm-6 col-xs-12">
+      <canvas id="graph9" height="72"></canvas>
     </div>
   </div>
 

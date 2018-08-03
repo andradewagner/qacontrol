@@ -11,6 +11,25 @@
     var vm = this;
     vm.filtro = null;
     vm.filtroAnalytics = null;
+    var opcoes = {
+      responsive: true,
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero:true
+              },
+              scaleLabel: {
+                display: true,
+                labelString: 'segundos'
+              }
+          }],
+          xAxes: [{
+            barPercentage: 0.3
+          }]
+      }
+    };
+
+    var corThreshold = 'rgba(255, 99, 132, 0.3)';
 
     vm.limparFiltro = function() {
       vm.testes = null;
@@ -121,22 +140,12 @@
                   borderWidth: 1
               }]
           },
-          options: {
-            responsive: true,
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }],
-                xAxes: [{
-                  barPercentage: 0.3
-                }]
-            }
-          }
+          options: opcoes
       });
 
       var graph1 = extrairTotaisGraficos('Login');
+      if(graph1[0].length === 0) graph1 = extrairTotaisGraficos('Access Token');
+
       var ctxGraph1 = $("#graph1");
       var myChartGraph1 = new Chart(ctxGraph1, {
           type: 'line',
@@ -151,19 +160,19 @@
                       'rgba(75, 192, 192, 1)'
                   ,
                   borderWidth: 3
+              },{
+                label: 'Threshold',
+                data: threshold(graph1[0].length),
+                fill: false,
+                borderColor: corThreshold
               }]
           },
-          options: {
-            responsive: true,
-            scales: {
-                yAxes: [{
-                    stacked: true
-                }]
-            }
-          }
+          options: opcoes
       });
 
       var graph2 = extrairTotaisGraficos('Compra');
+      if(graph2[0].length === 0) graph2 = extrairTotaisGraficos('Trocar Voz/Internet');
+
       var ctxGraph2 = $("#graph2");
       var myChartGraph2 = new Chart(ctxGraph2, {
           type: 'line',
@@ -178,19 +187,19 @@
                       'rgba(75, 192, 192, 1)'
                   ,
                   borderWidth: 3
+              },{
+                label: 'Threshold',
+                data: threshold(graph2[0].length),
+                fill: false,
+                borderColor: corThreshold
               }]
           },
-          options: {
-            responsive: true,
-            scales: {
-                yAxes: [{
-                    stacked: true
-                }]
-            }
-          }
+          options: opcoes
       });
 
       var graph3 = extrairTotaisGraficos('Internet');
+      if(graph3[0].length === 0) graph3 = extrairTotaisGraficos('Comprar pacotes sms');
+
       var ctxGraph3 = $("#graph3");
       var myChartGraph3 = new Chart(ctxGraph3, {
           type: 'line',
@@ -205,19 +214,19 @@
                       'rgba(75, 192, 192, 1)'
                   ,
                   borderWidth: 3
+              },{
+                label: 'Threshold',
+                data: threshold(graph3[0].length),
+                fill: false,
+                borderColor: corThreshold
               }]
           },
-          options: {
-            responsive: true,
-            scales: {
-                yAxes: [{
-                    stacked: true
-                }]
-            }
-          }
+          options: opcoes
       });
 
       var graph4 = extrairTotaisGraficos('Troca');
+      if(graph4[0].length === 0) graph4 = extrairTotaisGraficos('Comprar pacotes voz');
+
       var ctxGraph4 = $("#graph4");
       var myChartGraph4 = new Chart(ctxGraph4, {
           type: 'line',
@@ -232,19 +241,19 @@
                       'rgba(75, 192, 192, 1)'
                   ,
                   borderWidth: 3
+              },{
+                label: 'Threshold',
+                data: threshold(graph4[0].length),
+                fill: false,
+                borderColor: corThreshold
               }]
           },
-          options: {
-            responsive: true,
-            scales: {
-                yAxes: [{
-                    stacked: true
-                }]
-            }
-          }
+          options: opcoes
       });
 
       var graph5 = extrairTotaisGraficos('Voz');
+      if(graph5[0].length === 0) graph5 = extrairTotaisGraficos('Comprar pacotes internet');
+
       var ctxGraph5 = $("#graph5");
       var myChartGraph5 = new Chart(ctxGraph5, {
           type: 'line',
@@ -259,17 +268,124 @@
                       'rgba(75, 192, 192, 1)'
                   ,
                   borderWidth: 3
+              },{
+                label: 'Threshold',
+                data: threshold(graph5[0].length),
+                fill: false,
+                borderColor: corThreshold
               }]
           },
-          options: {
-            responsive: true,
-            scales: {
-                yAxes: [{
-                    stacked: true
-                }]
-            }
-          }
+          options: opcoes
       });
+
+      var graph6 = extrairTotaisGraficos('Comprar pacotes mix');
+      var ctxGraph6 = $("#graph6");
+      var myChartGraph6 = new Chart(ctxGraph6, {
+          type: 'line',
+          data: {
+            labels: graph6[1],
+              datasets: [{
+                label: labels[5],
+                  data: graph6[0],
+                  fill: false,
+                  lineTension: tensaoLinha,
+                  borderColor:
+                      'rgba(75, 192, 192, 1)'
+                  ,
+                  borderWidth: 3
+              },{
+                label: 'Threshold',
+                data: threshold(graph6[0].length),
+                fill: false,
+                borderColor: corThreshold
+              }]
+          },
+          options: opcoes
+      });
+
+      var graph7 = extrairTotaisGraficos('Home :: Recarga');
+      var ctxGraph7 = $("#graph7");
+      var myChartGraph7 = new Chart(ctxGraph7, {
+          type: 'line',
+          data: {
+            labels: graph7[1],
+              datasets: [{
+                label: labels[6],
+                  data: graph7[0],
+                  fill: false,
+                  lineTension: tensaoLinha,
+                  borderColor:
+                      'rgba(75, 192, 192, 1)'
+                  ,
+                  borderWidth: 3
+              },{
+                label: 'Threshold',
+                data: threshold(graph7[0].length),
+                fill: false,
+                borderColor: corThreshold
+              }]
+          },
+          options: opcoes
+      });
+
+      var graph8 = extrairTotaisGraficos('Menu Navegação :: Mudar sua oferta');
+      var ctxGraph8 = $("#graph8");
+      var myChartGraph8 = new Chart(ctxGraph8, {
+          type: 'line',
+          data: {
+            labels: graph8[1],
+              datasets: [{
+                label: labels[7],
+                  data: graph8[0],
+                  fill: false,
+                  lineTension: tensaoLinha,
+                  borderColor:
+                      'rgba(75, 192, 192, 1)'
+                  ,
+                  borderWidth: 3
+              },{
+                label: 'Threshold',
+                data: threshold(graph8[0].length),
+                fill: false,
+                borderColor: corThreshold
+              }]
+          },
+          options: opcoes
+      });
+
+      var graph9 = extrairTotaisGraficos('Menu Navegação :: Entenda a sua oferta');
+      var ctxGraph9 = $("#graph9");
+      var myChartGraph9 = new Chart(ctxGraph9, {
+          type: 'line',
+          data: {
+            labels: graph9[1],
+              datasets: [{
+                label: labels[8],
+                  data: graph9[0],
+                  fill: false,
+                  lineTension: tensaoLinha,
+                  borderColor:
+                      'rgba(75, 192, 192, 1)'
+                  ,
+                  borderWidth: 3
+              },{
+                label: 'Threshold',
+                data: threshold(graph9[0].length),
+                fill: false,
+                borderColor: corThreshold
+              }]
+          },
+          options: opcoes
+      });
+
+      function threshold(tamanho){
+        var x = [];
+        for(var i = 0; i < tamanho; i++){
+          x.push(2);
+        }
+        return x;
+      }
+
     }
 
 
