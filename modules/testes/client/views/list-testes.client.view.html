@@ -141,7 +141,7 @@
             <td ng-if="$parent.$first">{{cenario.cenario}}</td>
             <td>
               <img height="20" ng-show="cenario.status == true" ng-src="../../../modules/core/client/img/brand/passed.png" />
-              <img id="{{$index}}" class="pointer" ng-show="cenario.status == false" height="20" ng-src="../../../modules/core/client/img/brand/fail.png" ng-click="vm.abrirModal($index, teste._id)"/>
+              <img id="{{$index}}" class="pointer" ng-show="cenario.status == false" height="20" ng-src="../../../modules/core/client/img/brand/fail.png" ng-click="vm.abrirModal(cenario.imagem, teste._id)"/>
               {{cenario.duracao / 1000 | number : 0}} seg
             </td>
           </tr>

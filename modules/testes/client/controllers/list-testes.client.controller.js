@@ -73,13 +73,13 @@
 
     vm.abrirModal = abrirModal;
 
-    function abrirModal(indice, id) {
+    function abrirModal(imagem, id) {
       let modal = document.getElementById('myModal');
       let modalImg = document.getElementById("img01");
       let captionText = document.getElementById("caption");
 
       modal.style.display = "block";
-      modalImg.src = '/modules/testes/client/images/'+ id + '/' + '0' + (indice + 1) + '.png';
+      modalImg.src = '/modules/testes/client/images/'+ id + '/' + imagem;
 
       var span = document.getElementsByClassName("close")[0];
       span.onclick = function() {
