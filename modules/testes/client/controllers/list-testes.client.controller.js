@@ -157,7 +157,7 @@
                   fill: false,
                   lineTension: tensaoLinha,
                   borderColor:
-                      'rgba(75, 192, 192, 1)'
+                      'rgba(75, 192, 192, 0.5)'
                   ,
                   borderWidth: 3
               },{
@@ -184,7 +184,7 @@
                   fill: false,
                   lineTension: tensaoLinha,
                   borderColor:
-                      'rgba(75, 192, 192, 1)'
+                      'rgba(75, 192, 192, 0.5)'
                   ,
                   borderWidth: 3
               },{
@@ -211,7 +211,7 @@
                   fill: false,
                   lineTension: tensaoLinha,
                   borderColor:
-                      'rgba(75, 192, 192, 1)'
+                      'rgba(75, 192, 192, 0.5)'
                   ,
                   borderWidth: 3
               },{
@@ -238,7 +238,7 @@
                   fill: false,
                   lineTension: tensaoLinha,
                   borderColor:
-                      'rgba(75, 192, 192, 1)'
+                      'rgba(75, 192, 192, 0.5)'
                   ,
                   borderWidth: 3
               },{
@@ -265,7 +265,7 @@
                   fill: false,
                   lineTension: tensaoLinha,
                   borderColor:
-                      'rgba(75, 192, 192, 1)'
+                      'rgba(75, 192, 192, 0.5)'
                   ,
                   borderWidth: 3
               },{
@@ -290,7 +290,7 @@
                   fill: false,
                   lineTension: tensaoLinha,
                   borderColor:
-                      'rgba(75, 192, 192, 1)'
+                      'rgba(75, 192, 192, 0.5)'
                   ,
                   borderWidth: 3
               },{
@@ -315,7 +315,7 @@
                   fill: false,
                   lineTension: tensaoLinha,
                   borderColor:
-                      'rgba(75, 192, 192, 1)'
+                      'rgba(75, 192, 192, 0.5)'
                   ,
                   borderWidth: 3
               },{
@@ -340,7 +340,7 @@
                   fill: false,
                   lineTension: tensaoLinha,
                   borderColor:
-                      'rgba(75, 192, 192, 1)'
+                      'rgba(75, 192, 192, 0.5)'
                   ,
                   borderWidth: 3
               },{
@@ -365,7 +365,7 @@
                   fill: false,
                   lineTension: tensaoLinha,
                   borderColor:
-                      'rgba(75, 192, 192, 1)'
+                      'rgba(75, 192, 192, 0.5)'
                   ,
                   borderWidth: 3
               },{
